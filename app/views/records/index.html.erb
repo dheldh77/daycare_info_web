@@ -1,0 +1,34 @@
+<div class="container">
+    <h2><%=@child.name%> 어린이의 일지</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">날짜</th>
+          <th scope="col">작성자</th>
+          <th scope="col">작성시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <% @records.each do |r| %>  
+            <tr>
+              <th scope="row"><%= r.id %></th>
+                <td> <a href="/records/show/<%= r.id %>"> <%=r.recordDate%> 일지</a></td>
+                <td> 선생님</td>
+                <td><%= r.created_at %></td>
+            </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+    <%if current_user.id == @child.user_id %>
+      <a href="/records/new/<%=@child.id%>">
+          <button type="button" class="btn btn-dark">글쓰기</button>
+      </a>
+    <% end %>
+
+    <a href="/">
+        <button type="button" class="btn btn-dark">홈</button>
+    </a>
+</div>

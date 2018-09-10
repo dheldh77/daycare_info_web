@@ -1,0 +1,52 @@
+<div class="container">
+    <h1><%= @post.title %></h1><hr />
+    <div style="text-align:right;">
+        
+        <div><%=@post.created_at.to_s.split("+").first %>, <%= time_ago_in_words(@post.created_at)%> ago</div>
+        <%# <div><%= @post.user.username %>
+        
+        <!--목록 수정 삭제 -->
+        <a href="/posts/index">
+            <button type="button" class="btn btn-light"><i class="fa fa-list"></i></button>
+        </a>
+
+        <!-- 글쓴이와 현재 유저가 같을 경우에만 보이게 -->
+        <% if current_user == @post.user %>
+            <a onclick="post_edit(<%=@post.id%>)">
+                <button type="button" class="btn btn-light"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+            </a> 
+            <a onclick="post_destroy(<%=@post.id%>)">
+                <button type="button" class="btn btn-light"><i class="fa fa-trash" aria-hidden="true"></i></buuton>
+            </a>    
+        <% end %>
+    </div>
+    
+    <div>
+        <div class="panel-body show_content"><%= @post.content.html_safe %></div>       
+    </div>
+    
+    
+</div>
+
+<%# 확인문 스크립트 %>
+<script type="text/javascript">
+function post_edit(id){
+    if (confirm("게시글을 수정하시겠습니까?") == true){    //확인
+        window.location.href=("/posts/edit/" + id);
+    }
+    else{   
+        
+    }
+}
+</script>
+
+<script type="text/javascript">
+function post_destroy(id){
+    if (confirm("게시글을 삭제하시겠습니까?") == true){    //확인
+        // document.form.submit();
+        window.location.href=("/posts/destroy/" + id);
+    }
+    else{   
+    }
+}
+</script>

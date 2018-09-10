@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+    <% if current_user.usertype == "parent"%>
+        <%= current_user.username %> 학부모 님
+    <% else %>
+        <%= current_user.username %> 선생님
+    <% end %>
+        
+    <%= link_to "로그아웃", destroy_user_session_path %>
+<% else %>
+    <%= link_to "로그인", new_user_session_path %>
+    <%= link_to "회원가입", new_user_registration_path %>
+<% end %>
+
+<div class="container">
+
+    <h1>틀 2</h1>
+    <a href="/posts/index"> 커뮤니티 </a> <br>
+    <a href="/children/index">아이</a> <br>
+</div>

@@ -1,0 +1,38 @@
+
+<div class="container">
+    <h2>Post(커뮤니티)</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">제목</th>
+          <th scope="col">작성자</th>
+          <th scope="col">작성시간</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <% @posts.each do |p| %>  
+            <tr>
+              <th scope="row"><%= p.id %></th>
+                <td> <a href="/posts/show/<%= p.id %>"><%= p.title %></a>  <% if p.content.include?("<img src=") %> <i class="fas fa-image"></i> <% end %></td>
+                <!--유저 타입에 따라 작성자 명 뒤에 붙이기-->
+                <% if p.user.usertype == "teacher"%>
+                  <td><%= p.user.username%> 선생님 </td>
+                <% else %>
+                  <td><%= p.user.username%> 학부모 </td>
+                <% end %>
+
+              <td><%= p.created_at %></td>
+            </tr>
+        <% end %>
+        
+      </tbody>
+    </table>
+    <a href="/posts/new">
+        <button type="button" class="btn btn-dark">글쓰기</button>
+    </a>
+    <a href="/">
+        <button type="button" class="btn btn-dark">홈</button>
+    </a>
+</div>

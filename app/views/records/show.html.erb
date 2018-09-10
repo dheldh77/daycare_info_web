@@ -1,0 +1,51 @@
+<div class="container">
+    <h1><%= @child.name %>의 <%=@record.recordDate%> 일지</h1><hr />
+    <div style="text-align:right;">
+        
+        <div><%=@record.created_at.to_s.split("+").first %>, <%= time_ago_in_words(@record.created_at)%> ago</div>
+        <%# <div><%= @post.user.username %>
+        
+        <!--목록 수정 삭제 -->
+        <a href="/records/index/<%=@record.child_id%>">
+            <button type="button" class="btn btn-light"><i class="fa fa-list"></i></button>
+        </a>
+        <a onclick="record_edit(<%=@record.id%>)">
+            <button type="button" class="btn btn-light"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+        </a> 
+        <a onclick="record_destroy(<%=@record.id%>)">
+            <button type="button" class="btn btn-light"><i class="fa fa-trash" aria-hidden="true"></i></buuton>
+        </a>    
+    </div>
+    
+    참여율 : <%=@record.participation%><br>
+    식사율 : <%=@record.meal%><br>
+    활동량 : <%=@record.activity%><br>
+    
+    <p><%= simple_format(@record.comment) %></p><hr>
+    
+    
+    
+</div>
+
+<%# 확인문 스크립트 %>
+<script type="text/javascript">
+function record_edit(id){
+    if (confirm("일지를 수정하시겠습니까?") == true){    //확인
+        window.location.href=("/records/edit/" + id);
+    }
+    else{   
+        
+    }
+}
+</script>
+
+<script type="text/javascript">
+function record_destroy(id){
+    if (confirm("일지를 삭제하시겠습니까?") == true){    //확인
+        // document.form.submit();
+        window.location.href=("/records/destroy/" + id);
+    }
+    else{   
+    }
+}
+</script>

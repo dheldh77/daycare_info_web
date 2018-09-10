@@ -5,6 +5,17 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Gem for User
+gem 'devise'
+
+# Gem for Post(Yoon)
+gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
+gem 'carrierwave'
+gem 'fog', '~> 1.41.0'
+gem 'mini_magick'
+
+# Gem for Security(Yoon)
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.7'

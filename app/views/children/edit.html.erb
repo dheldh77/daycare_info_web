@@ -1,0 +1,40 @@
+<div class="container">
+    <!--주소창으로 보낼 수 있는 건 전부 get, 그 외 데이터를 첨부하면 post-->
+    <form action="/children/update/<%=@child.id%>" method="post" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">이름</label>
+        <input style="width:15%;" name="input_name" type="text" class="form-control" id="exampleFormControlInput1" value="<%=@child.name%>">
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">나이</label>
+        <input style="width:15%;" type="number" name="input_age" min="1" max="10" value="<%=@child.age%>" class="form-control" id="exampleFormControlInput1">
+      </div>
+
+      <div class="form-group">
+        <% if @child.gender == 1 %>
+            <input type="radio" name="input_gender" value="1" checked>남자
+            &nbsp&nbsp<input type="radio" name="input_gender" value="2">여자
+        <% else %>
+            <input type="radio" name="input_gender" value="1" >남자
+            &nbsp&nbsp<input type="radio" name="input_gender" value="2" checked>여자
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">반 이름</label>
+        <input style="width:15%;" name="input_className" type="text" class="form-control" id="exampleFormControlTextarea1" value="<%=@child.className%>">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">반 번호</label>
+        <input style="width:15%;" type="number" name="input_classNumber" min="1" max="50" class="form-control" id="exampleFormControlInput1" value="<%=@child.classNumber%>">
+      </div>
+    
+      <input type="checkbox" name="input_allday" value="1">&nbsp종일반 여부<br>
+      <br>
+
+      <button type="submit" class="btn btn-dark">수정</button> 
+    </form>
+</div>

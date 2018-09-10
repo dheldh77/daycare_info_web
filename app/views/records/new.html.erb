@@ -1,0 +1,42 @@
+<div class="container">
+    <!--주소창으로 보낼 수 있는 건 전부 get, 그 외 데이터를 첨부하면 post-->
+    <form action="/records/create" method="post" enctype="multipart/form-data">
+      
+      <div class="form-group">
+        <% t= Time.new %>
+        <label for="exampleFormControlInput1">날짜</label>
+        <input name="input_date" type="date" class="form-control" id="exampleFormControlInput1" style="width:20%;" value="<%=t.year%>-<%=sprintf '%02d', t.month%>-<%=sprintf '%02d', t.day%>" max="<%=t.year%>-<%=sprintf '%02d', t.month%>-<%=sprintf '%02d', t.day%>">
+      </div>
+      
+      참가율 : <% 5.downto(1).each do |num| %>
+                <input class="star star-<%=num%>" id="star-<%=num%>" type="radio" name="input_participation" value="<%=num%>"/>
+                <label class="star big-star star-<%=num%>" for="star-<%=num%>"></label>
+      <% end %>
+      <br>
+
+      식사율 : <% 5.downto(1).each do |num| %>
+                <input class="star star-<%=num%>" id="star-<%=num%>" type="radio" name="input_meal" value="<%=num%>"/>
+                <label class="star big-star star-<%=num%>" for="star-<%=num%>"></label>
+      <% end %>
+      <br>
+      
+      활동량 : <% 5.downto(1).each do |num| %>
+                <input class="star star-<%=num%>" id="star-<%=num%>" type="radio" name="input_activity" value="<%=num%>"/>
+                <label class="star big-star star-<%=num%>" for="star-<%=num%>"></label>
+      <% end %>
+      <br><br>
+      <input type="hidden" value="<%=@child.id%>" name="child_id">
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">코멘트</label>
+        <textarea name="input_comment" class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="내용을 입력하세요"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-dark">작성</button> 
+    </form>
+</div>
+
+<script>
+$('#star').raty({
+  path: '/imgs'
+});
+</script>

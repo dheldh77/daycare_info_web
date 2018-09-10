@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  age: 1
+  gender: 1
+  kindergarden_id: 1
+  className: MyString
+  classNumber: 1
+  allday: false
+  thumbnail: MyString
+
+two:
+  name: MyString
+  age: 1
+  gender: 1
+  kindergarden_id: 1
+  className: MyString
+  classNumber: 1
+  allday: false
+  thumbnail: MyString

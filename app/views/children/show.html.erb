@@ -1,0 +1,74 @@
+<div class="container">
+    <h1> <%=@child.name%> 어린이 </h1><hr />(# 아래의 프로필을 클릭하면 일지로 이동합니다.)
+    <div style="text-align:right;">
+        
+        <%# <div><%= @post.user.username %>
+        
+        <!--목록 수정 삭제 -->
+        <a href="/children/index">
+            <button type="button" class="btn btn-light"><i class="fa fa-list"></i></button>
+        </a>
+        <a onclick="child_edit(<%=@child.id%>)">
+            <button type="button" class="btn btn-light"><i class="fa fa-wrench" aria-hidden="true"></i></button>
+        </a> 
+        <a onclick="child_destroy(<%=@child.id%>)">
+            <button type="button" class="btn btn-light"><i class="fa fa-trash" aria-hidden="true"></i></buuton>
+        </a>    
+
+    </div>
+    <a onclick="child_record(<%=@child.id%>)">
+        <button type="button" class="btn btn-light">
+            
+    <% unless @child.thumbnail.nil? %>
+        <%= image_tag @child.thumbnail, width: "200" %>
+    <% end %>
+    <br><br>
+    <% g = @child.gender %>
+    <% a = @child.allday %>
+
+    이름 : <%=@child.name%><br>
+    나이 : <%=@child.age%><br> 
+    성별 : <%if g == 1 %> 남자 <% else %> 여자 <% end %><br>
+    반 이름 : <%=@child.className %> <br>
+    반 번호 : <%=@child.classNumber %> <br>
+    종일반 여부 : <%if a == true %> 종일반 <% else %> 종일반 아님 <% end %><br>
+        </buuton>
+    </a>
+    
+    
+        
+</div>
+
+<%# 확인문 스크립트 %>
+<script type="text/javascript">
+function child_edit(id){
+    if (confirm("아이 정보를 수정하시겠습니까?") == true){    //확인
+        window.location.href=("/children/edit/" + id);
+    }
+    else{   
+        
+    }
+}
+</script>
+
+<script type="text/javascript">
+function child_destroy(id){
+    if (confirm("아이 정보를 삭제하시겠습니까?") == true){    //확인
+        // document.form.submit();
+        window.location.href=("/children/destroy/" + id);
+    }
+    else{   
+    }
+}
+</script>
+
+<script type="text/javascript">
+function child_record(id){
+    if (confirm("아이 일지를 보시겠습니까?") == true){    //확인
+        // document.form.submit();
+        window.location.href=("/records/index/" + id);
+    }
+    else{   
+    }
+}
+</script>
