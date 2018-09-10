@@ -13,6 +13,7 @@ gem 'tinymce-rails-imageupload', '~> 4.0.0.beta'
 gem 'carrierwave'
 gem 'fog', '~> 1.41.0'
 gem 'mini_magick'
+gem 'kaminari'
 
 # Gem for Security(Yoon)
 gem 'figaro'

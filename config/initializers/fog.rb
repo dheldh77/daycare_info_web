@@ -10,4 +10,3 @@ CarrierWave.configure do |config|
     config.fog_directory  = 'woongsin94'                                      # required
     config.fog_attributes = {} # optional, defaults to {}
   end
-  
